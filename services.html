@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | CD Defense Industries</title>
+    <meta name="description" content="Professional gunsmithing services offered by CD Defense Industries.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #0f1115;
+            --color-surface: #1a1d23;
+            --color-surface-light: #252a33;
+            --color-text: #e8e8e8;
+            --color-text-muted: #9ca3af;
+            --color-accent: #c9a227;
+            --color-accent-hover: #b08d1f;
+            --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --font-heading: 'Oswald', 'Arial Narrow', sans-serif;
+            --radius: 8px;
+            --max-width: 1200px;
+            --transition: 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; }
+        a { color: var(--color-accent); text-decoration: none; }
+        a:hover { color: var(--color-accent-hover); }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(15, 17, 21, 0.95);
+            border-bottom: 1px solid var(--color-surface-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-links a:hover { color: var(--color-accent); }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 5rem 2rem 3rem 2rem;
+            background-color: var(--color-surface);
+        }
+        .page-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        .page-header h1 span { color: var(--color-accent); }
+        .page-header p {
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        section {
+            padding: 4rem 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-surface-light);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-accent);
+        }
+        .service-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .service-card ul {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            padding-left: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: var(--color-surface);
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 100%;
+        }
+        .cta h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .cta p {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: #111;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            color: #111;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0c0f;
+            color: var(--color-text-muted);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--color-surface-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-surface);
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--color-surface-light);
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">CD Defense Industries</a>
+            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Our <span>Services</span></h1>
+        <p>From routine maintenance to full custom builds, we treat every firearm with precision and care.</p>
+    </header>
+
+    <!-- Services Menu -->
+    <section>
+        <div class="services-grid">
+            <article class="service-card">
+                <div class="service-icon">🔫</div>
+                <h3>General Repairs</h3>
+                <p>Keep your firearm running reliably with our comprehensive repair services.</p>
+                <ul>
+                    <li>Deep cleaning & inspection</li>
+                    <li>Extractor & ejector repair</li>
+                    <li>Spring replacement</li>
+                    <li>Function & safety checks</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Accuracy Work</h3>
+                <p>Get the most precision from your rifle or handgun.</p>
+                <ul>
+                    <li>Barrel crowning & bedding</li>
+                    <li>Trigger jobs</li>
+                    <li>Scope mounting & bore sighting</li>
+                    <li>Load development consulting</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Custom Builds</h3>
+                <p>Tailored firearm builds designed around your purpose and preferences.</p>
+                <ul>
+                    <li>AR platform assembly</li>
+                    <li>Precision bolt-action rifles</li>
+                    <li>Hunting rifle configurations</li>
+                    <li>Parts selection & sourcing</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Cerakote & Finishing</h3>
+                <p>Protect and customize your firearm with durable ceramic coatings.</p>
+                <ul>
+                    <li>Solid colors & camo patterns</li>
+                    <li>Corrosion & wear resistance</li>
+                    <li>Stencils & custom designs</li>
+                    <li>High-temp applications</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Restoration</h3>
+                <p>Bring heirloom and vintage firearms back to life.</p>
+                <ul>
+                    <li>Rust bluing & rebluing</li>
+                    <li>Stock repair & refinishing</li>
+                    <li>Mechanical refurbishment</li>
+                    <li>Preservation & storage prep</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>FFL Transfers</h3>
+                <p>Convenient firearm transfers with proper compliance.</p>
+                <ul>
+                    <li>Incoming & outgoing transfers</li>
+                    <li>Background check assistance</li>
+                    <li>Proper documentation</li>
+                    <li>Secure storage during process</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Get Started?</h2>
+        <p>Contact us for a quote or to schedule your firearm drop-off.</p>
+        <a href="index.html#contact" class="btn btn-primary">Request a Quote</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© <span id="year"></span> CD Defense Industries. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
