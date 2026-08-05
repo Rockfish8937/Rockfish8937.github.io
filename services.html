@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | CD Defense Industries</title>
-    <meta name="description" content="Professional gunsmithing services offered by CD Defense Industries.">
+    <title>Services & Pricing | CD Defense Industries</title>
+    <meta name="description" content="CNC machining, laser engraving, Cerakote finishing, and FFL services with transparent pricing.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,11 +27,13 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body { font-family: var(--font-main); background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; }
         a { color: var(--color-accent); text-decoration: none; }
         a:hover { color: var(--color-accent-hover); }
+        img { max-width: 100%; display: block; }
 
-        /* Navigation */
+        /* Nav */
         .navbar {
             background-color: rgba(15, 17, 21, 0.95);
             border-bottom: 1px solid var(--color-surface-light);
@@ -77,16 +79,32 @@
             cursor: pointer;
         }
 
-        /* Page Header */
+        .service-video {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid var(--color-surface-light);
+    background-color: #000;
+}
+
+.service-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+        /* Header */
         .page-header {
             text-align: center;
-            padding: 5rem 2rem 3rem 2rem;
+            padding: 5rem 2rem 3rem;
             background-color: var(--color-surface);
         }
         .page-header h1 {
             font-family: var(--font-heading);
             font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--color-text);
             margin-bottom: 1rem;
         }
         .page-header h1 span { color: var(--color-accent); }
@@ -96,66 +114,132 @@
             margin: 0 auto;
         }
 
-        /* Services Grid */
-        section {
-            padding: 4rem 2rem;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
+        /* Layout */
+        section { padding: 4rem 2rem; }
+        .container { max-width: var(--max-width); margin: 0 auto; }
+
+        /* Unified Service Cards */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
         .service-card {
             background-color: var(--color-surface);
             border: 1px solid var(--color-surface-light);
             border-radius: var(--radius);
-            padding: 2rem;
+            overflow: hidden;
             transition: var(--transition);
         }
         .service-card:hover {
             transform: translateY(-5px);
             border-color: var(--color-accent);
         }
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;  /* was "cover" */
+            border-bottom: 1px solid var(--color-surface-light);
+            background-color: var(--color-bg); /* adds padding color behind image */
         }
-        .service-card h3 {
+        .service-body {
+            padding: 1.5rem;
+        }
+        .service-body h3 {
             font-family: var(--font-heading);
             font-size: 1.5rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: var(--color-accent);
         }
-        .service-card p {
+        .service-body p {
             color: var(--color-text-muted);
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
-        .service-card ul {
+        .service-body ul {
             color: var(--color-text-muted);
             font-size: 0.9rem;
             padding-left: 1.2rem;
             line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        /* CTA Section */
-        .cta {
+        /* Pricing inside card */
+        .pricing-block {
+            background-color: var(--color-bg);
+            border-radius: var(--radius);
+            padding: 1rem;
+            border: 1px solid var(--color-surface-light);
+        }
+        .pricing-block h4 {
+            font-family: var(--font-heading);
+            color: var(--color-text);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--color-surface-light);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-row .price { color: var(--color-text); font-weight: 600; }
+
+        /* Gallery */
+        .gallery-section {
             background-color: var(--color-surface);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-surface-light);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* CTA */
+        .cta {
+            background-color: var(--color-bg);
             text-align: center;
             padding: 4rem 2rem;
-            max-width: 100%;
         }
         .cta h2 {
             font-family: var(--font-heading);
             font-size: 2rem;
             margin-bottom: 1rem;
         }
-        .cta p {
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem;
-        }
+        .cta p { color: var(--color-text-muted); margin-bottom: 1.5rem; }
         .btn {
             display: inline-block;
             padding: 0.9rem 2rem;
@@ -165,15 +249,13 @@
             letter-spacing: 1px;
             transition: var(--transition);
             border: 2px solid transparent;
+            cursor: pointer;
         }
         .btn-primary {
             background-color: var(--color-accent);
             color: #111;
         }
-        .btn-primary:hover {
-            background-color: var(--color-accent-hover);
-            color: #111;
-        }
+        .btn-primary:hover { background-color: var(--color-accent-hover); color: #111; }
 
         /* Footer */
         footer {
@@ -184,7 +266,6 @@
             border-top: 1px solid var(--color-surface-light);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -204,7 +285,6 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">CD Defense Industries</a>
@@ -213,103 +293,156 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#process">Process</a></li>
-                <li><a href="index.html#testimonials">Testimonials</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Page Header -->
     <header class="page-header">
-        <h1>Our <span>Services</span></h1>
-        <p>From routine maintenance to full custom builds, we treat every firearm with precision and care.</p>
+        <h1>Services & <span>Pricing</span></h1>
+        <p>CNC machining, laser engraving, Cerakote finishing, and FFL transfers. Transparent pricing for every job size.</p>
     </header>
 
-    <!-- Services Menu -->
+    <!-- UNIFIED SERVICES + PRICING -->
     <section>
-        <div class="services-grid">
-            <article class="service-card">
-                <div class="service-icon">🔫</div>
-                <h3>General Repairs</h3>
-                <p>Keep your firearm running reliably with our comprehensive repair services.</p>
-                <ul>
-                    <li>Deep cleaning & inspection</li>
-                    <li>Extractor & ejector repair</li>
-                    <li>Spring replacement</li>
-                    <li>Function & safety checks</li>
-                </ul>
-            </article>
+        <div class="container">
+            <div class="services-grid">
 
-            <article class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3>Accuracy Work</h3>
-                <p>Get the most precision from your rifle or handgun.</p>
-                <ul>
-                    <li>Barrel crowning & bedding</li>
-                    <li>Trigger jobs</li>
-                    <li>Scope mounting & bore sighting</li>
-                    <li>Load development consulting</li>
-                </ul>
-            </article>
+                <!-- CNC Machining -->
+                <article class="service-card">
+                    <img src="https://images.unsplash.com/photo-1740209475472-aa7d280f7452?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="CNC machining" class="service-image">
+                    <div class="service-body">
+                        <h3>CNC Machining</h3>
+                        <p>Precision milling and turning for custom parts, prototypes, and production runs.</p>
+                        <ul>
+                            <li>3-axis and 4-axis CNC milling</li>
+                            <li>Aluminum, steel, titanium, polymer</li>
+                            <li>Prototyping to small-batch production</li>
+                        </ul>
+                        <div class="pricing-block">
+                            <h4>Pricing</h4>
+                            <div class="price-row"><span>Setup / Programming</span><span class="price">$75</span></div>
+                            <div class="price-row"><span>Machine Time (per hour)</span><span class="price">$85</span></div>
+                            <div class="price-row"><span>Simple Part</span><span class="price">$50–$150</span></div>
+                            <div class="price-row"><span>Complex Part</span><span class="price">$150–$500+</span></div>
+                        </div>
+                    </div>
+                </article>
 
-            <article class="service-card">
-                <div class="service-icon">🛠️</div>
-                <h3>Custom Builds</h3>
-                <p>Tailored firearm builds designed around your purpose and preferences.</p>
-                <ul>
-                    <li>AR platform assembly</li>
-                    <li>Precision bolt-action rifles</li>
-                    <li>Hunting rifle configurations</li>
-                    <li>Parts selection & sourcing</li>
-                </ul>
-            </article>
+                <!-- Laser Engraving -->
+<article class="service-card">
+    <div class="service-video">
+        <iframe src="https://player.vimeo.com/video/1114901364?badge=0&byline=0&h=bd1e962410&portrait=0&title=0&autoplay=1&loop=1&muted=1&controls=0" 
+                title="Laser Engraving" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="service-body">
+        <h3>Laser Engraving</h3>
+        <p>Fiber laser marking and deep engraving for metal, polymer, and coated surfaces.</p>
+        <ul>
+            <li>Serial numbers & NFA engraving</li>
+            <li>Logo and branding marks</li>
+            <li>Deep engraving for Cerakote fill</li>
+            <li>Batch processing available</li>
+        </ul>
+                        <div class="pricing-block">
+                            <h4>Pricing</h4>
+                            <div class="price-row"><span>Setup Fee</span><span class="price">$25</span></div>
+                            <div class="price-row"><span>Small Mark</span><span class="price">$40</span></div>
+                            <div class="price-row"><span>Large / Deep Engrave</span><span class="price">$75–$150</span></div>
+                            <div class="price-row"><span>Serial / NFA Mark</span><span class="price">$50</span></div>
+                        </div>
+                    </div>
+                </article>
 
-            <article class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>Cerakote & Finishing</h3>
-                <p>Protect and customize your firearm with durable ceramic coatings.</p>
-                <ul>
-                    <li>Solid colors & camo patterns</li>
-                    <li>Corrosion & wear resistance</li>
-                    <li>Stencils & custom designs</li>
-                    <li>High-temp applications</li>
-                </ul>
-            </article>
+                <!-- Cerakote Finishing -->
+                <article class="service-card">
+                    <img src="https://images.unsplash.com/photo-1598556776374-1c2c0e5e6e1e?auto=format&fit=crop&w=800&q=80" alt="Cerakote finishing" class="service-image">
+                    <div class="service-body">
+                        <h3>Cerakote Finishing</h3>
+                        <p>Durable ceramic coating applied in-house with custom colors and stencils.</p>
+                        <ul>
+                            <li>Single color and multi-color</li>
+                            <li>Custom stencil design</li>
+                            <li>High-temp and thin-film options</li>
+                            <li>Full firearm and parts-only jobs</li>
+                        </ul>
+                        <div class="pricing-block">
+                            <h4>Pricing</h4>
+                            <div class="price-row"><span>Handgun (single color)</span><span class="price">$150</span></div>
+                            <div class="price-row"><span>Rifle / Shotgun</span><span class="price">$200–$275</span></div>
+                            <div class="price-row"><span>Multi-color / Camo</span><span class="price">$275–$450</span></div>
+                            <div class="price-row"><span>Custom Stencil</span><span class="price">$50–$125</span></div>
+                        </div>
+                    </div>
+                </article>
 
-            <article class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>Restoration</h3>
-                <p>Bring heirloom and vintage firearms back to life.</p>
-                <ul>
-                    <li>Rust bluing & rebluing</li>
-                    <li>Stock repair & refinishing</li>
-                    <li>Mechanical refurbishment</li>
-                    <li>Preservation & storage prep</li>
-                </ul>
-            </article>
+                <!-- FFL Transfers -->
+                <article class="service-card">
+                    <img src="https://img1.wsimg.com/isteam/ip/5b8bcffe-aefd-4c05-a7b0-3e63e9219516/FFL-type-7-manufacturer-certified.png" alt="FFL transfer" class="service-image">
+                    <div class="service-body">
+                        <h3>FFL Transfers</h3>
+                        <p>Licensed firearm dealer for legal transfers, background checks, and compliance.</p>
+                        <ul>
+                            <li>Incoming and outgoing transfers</li>
+                            <li>Private party transfers</li>
+                            <li>Background check processing</li>
+                            <li>Secure storage during wait</li>
+                        </ul>
+                        <div class="pricing-block">
+                            <h4>Pricing</h4>
+                            <div class="price-row"><span>Standard Transfer</span><span class="price">$40</span></div>
+                            <div class="price-row"><span>NFA Item Transfer</span><span class="price">$75</span></div>
+                            <div class="price-row"><span>Private Party</span><span class="price">$50</span></div>
+                            <div class="price-row"><span>Storage (per month)</span><span class="price">$15</span></div>
+                        </div>
+                    </div>
+                </article>
 
-            <article class="service-card">
-                <div class="service-icon">🔒</div>
-                <h3>FFL Transfers</h3>
-                <p>Convenient firearm transfers with proper compliance.</p>
-                <ul>
-                    <li>Incoming & outgoing transfers</li>
-                    <li>Background check assistance</li>
-                    <li>Proper documentation</li>
-                    <li>Secure storage during process</li>
-                </ul>
-            </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align:center; margin-bottom: 0.5rem;">Our Work</h2>
+            <p class="section-subtitle" style="text-align:center; color: var(--color-text-muted); margin-bottom: 3rem;">Recent customer projects. Check back as we add more.</p>
+
+            <div class="gallery-grid">
+                <!-- Replace placeholder URLs with your customer photos -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Customer Job 1</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Customer Job 2</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Customer Job 3</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Customer Job 4</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Customer Job 5</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">Customer Job 6</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta">
-        <h2>Ready to Get Started?</h2>
-        <p>Contact us for a quote or to schedule your firearm drop-off.</p>
-        <a href="index.html#contact" class="btn btn-primary">Request a Quote</a>
+        <h2>Need a Custom Quote?</h2>
+        <p>Send us your specs, files, or photos and we'll respond within one business day.</p>
+        <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© <span id="year"></span> CD Defense Industries. All rights reserved.</p>
     </footer>
@@ -323,6 +456,5 @@
         });
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-
 </body>
 </html>
