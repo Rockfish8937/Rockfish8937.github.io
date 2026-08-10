@@ -26,6 +26,38 @@
             --transition: 0.3s ease;
         }
 
+        .promo-banner {
+            background-color: var(--color-accent);
+            color: #111;
+            padding: 0.75rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .promo-banner .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .promo-text {
+            color: #111;
+        }
+        .promo-link {
+            color: #111;
+            text-decoration: underline;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .promo-link:hover {
+            color: #000;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-main); background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; }
@@ -51,11 +83,23 @@
             margin: 0 auto;
         }
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--color-accent);
             letter-spacing: 1px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+        .logo span {
+            color: var(--color-accent);
         }
         .nav-links {
             display: flex;
@@ -285,9 +329,20 @@
 </head>
 <body>
 
+    <!-- PROMO BANNER -->
+    <div class="promo-banner">
+        <div class="container">
+            <span class="promo-text">$10 Ammo Transfers — No Minimum / No Maximum — Background Check Included</span>
+            <a href="index.html#contact" class="promo-link">Learn More</a>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">CD Defense Industries</a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="CD Defense Industries logo">
+                <span>CD Industries</span>
+            </a>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
             <ul class="nav-links">
                 <li><a href="services.html">Services</a></li>
@@ -313,7 +368,7 @@
                     <img src="https://images.unsplash.com/photo-1740209475472-aa7d280f7452?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="CNC machining" class="service-image">
                     <div class="service-body">
                         <h3>CNC Machining</h3>
-                        <p>Precision milling and turning for custom parts, prototypes, and production runs.</p>
+                        <p>Precision milling for custom parts, prototypes, and production runs.</p>
                         <ul>
                             <li>3-axis and 4-axis CNC milling</li>
                             <li>Aluminum, steel, titanium, polymer</li>
@@ -343,7 +398,6 @@
         <h3>Laser Engraving</h3>
         <p>Fiber laser marking and deep engraving for metal, polymer, and coated surfaces.</p>
         <ul>
-            <li>Serial numbers & NFA engraving</li>
             <li>Logo and branding marks</li>
             <li>Deep engraving for Cerakote fill</li>
             <li>Batch processing available</li>
@@ -353,14 +407,13 @@
                             <div class="price-row"><span>Setup Fee</span><span class="price">$25</span></div>
                             <div class="price-row"><span>Small Mark</span><span class="price">$40</span></div>
                             <div class="price-row"><span>Large / Deep Engrave</span><span class="price">$75–$150</span></div>
-                            <div class="price-row"><span>Serial / NFA Mark</span><span class="price">$50</span></div>
                         </div>
                     </div>
 </article>
 
                 <!-- Cerakote Finishing -->
                 <article class="service-card">
-                    <img src="https://images.unsplash.com/photo-1598556776374-1c2c0e5e6e1e?auto=format&fit=crop&w=800&q=80" alt="Cerakote finishing" class="service-image">
+                    <img src="images/cerakote_kryptic.jpg" alt="Cerakote finishing" class="service-image">
                     <div class="service-body">
                         <h3>Cerakote Finishing</h3>
                         <p>Durable ceramic coating applied in-house with custom colors and stencils.</p>
@@ -395,8 +448,7 @@
                         <div class="pricing-block">
                             <h4>Pricing</h4>
                             <div class="price-row"><span>Ammunition - Fee is per order number <br> no minimum/maximum amount per order<br> includes NYS background check </span><span class="price">$10</span></div>
-                            <div class="price-row"><span>Standard Transfer</span><span class="price">$40</span></div>
-                            <div class="price-row"><span>NFA Item Transfer</span><span class="price">$75</span></div>
+                            <div class="price-row"><span>Long Gun Transfer</span><span class="price">$40</span></div>
                             <div class="price-row"><span>Private Party</span><span class="price">$50</span></div>
                             <div class="price-row"><span>Storage (per month)</span><span class="price">$15</span></div>
                         </div>
@@ -416,22 +468,16 @@
             <div class="gallery-grid">
                 <!-- Replace placeholder URLs with your customer photos -->
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Customer Job 1</div>
+                     <img src="images/distressed_look.jpg" alt="Description of the job">
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Customer Job 2</div>
+                    <img src="images/tan-_leveraction.jpg" alt="Description of the job">
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Customer Job 3</div>
+                    <img src="images/machining.jpg" alt="Description of the job">
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-placeholder">Customer Job 4</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">Customer Job 5</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">Customer Job 6</div>
+                    <img src="images/porting.jpg" alt="Description of the job">
                 </div>
             </div>
         </div>
@@ -445,7 +491,7 @@
     </section>
 
     <footer>
-        <p>© <span id="year"></span> CD Defense Industries. All rights reserved.</p>
+        <p>© <span id="year"></span> CD Industries. All rights reserved.</p>
     </footer>
 
     <script>

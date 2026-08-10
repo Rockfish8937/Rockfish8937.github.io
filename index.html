@@ -31,6 +31,38 @@
             --transition: 0.3s ease;
         }
 
+        .promo-banner {
+            background-color: var(--color-accent);
+            color: #111;
+            padding: 0.75rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .promo-banner .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .promo-text {
+            color: #111;
+        }
+        .promo-link {
+            color: #111;
+            text-decoration: underline;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .promo-link:hover {
+            color: #000;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -83,14 +115,6 @@
             margin: 0 auto;
         }
 
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--color-accent);
-            letter-spacing: 1px;
-        }
-
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -116,6 +140,26 @@
             color: var(--color-text);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+        .logo span {
+            color: var(--color-accent);
         }
 
         /* =======================
@@ -471,18 +515,29 @@
 </head>
 <body>
 
-    <!-- =======================
+    <!-- PROMO BANNER -->
+    <div class="promo-banner">
+        <div class="container">
+            <span class="promo-text">$10 Ammo Transfers — No Minimum / No Maximum — Background Check Included</span>
+            <a href="index.html#contact" class="promo-link">Learn More</a>
+        </div>
+    </div>
+
+  <!-- =======================
          MODULE: NAVIGATION
     ======================== -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">CD Defense Industries</div>
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="CD Defense Industries logo">
+                <span>CD Industries</span>
+            </a>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
             <ul class="nav-links">
-    <li><a href="services.html">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -509,7 +564,7 @@
                 <img src="https://images.unsplash.com/photo-1676496649264-6d1318f645f9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Precision machining work">
                 <div>
                     <h2>Machining, Laser & Coating Under One Roof</h2>
-                    <p>CD Defense Industries is a full-service machining and finishing shop. We run a CNC mill for custom parts, operate fiber laser systems for deep engraving and marking, apply Cerakote ceramic coatings for durability, and maintain our FFL for legal firearm transfers.</p>
+                    <p>CD Industries is a full-service machining and finishing shop. We run a CNC mill for custom parts, operate fiber laser systems for deep engraving and marking, apply Cerakote ceramic coatings for durability, and maintain our FFL for legal firearm transfers.</p>
                     <p>Whether you need a one-off prototype machined from billet, a batch of parts laser-marked with your logo, or a complete Cerakote job with custom stencils — we have the equipment and experience to deliver.</p>
                     <a href="services.html" class="btn btn-primary">See Pricing</a>
                 </div>
@@ -542,7 +597,7 @@
                     </div>
                     <div class="step">
                         <div class="step-number">4</div>
-                        <h3>Pickup or Delivery</h3>
+                        <h3>Flexible Pickup</h3>
                         <p>We test, clean, and return your firearm ready for the range or field.</p>
                     </div>
                 </div>
@@ -618,14 +673,14 @@
     ======================== -->
     <footer>
         <div class="container">
-            <div class="logo">CD DEFENSE INDUSTRIES</div>
+            <div class="logo">CD INDUSTRIES</div>
             <ul class="footer-links">
                 <li><a href="services.html">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <p>© <span id="year"></span> CD Defense. All rights reserved.</p>
+            <p>© <span id="year"></span> CD Industries. All rights reserved.</p>
             <p class="disclaimer">All services comply with federal, state, and local firearms laws. Valid identification and required documentation are necessary for all transfers and certain services. We reserve the right to refuse service.</p>
         </div>
     </footer>
