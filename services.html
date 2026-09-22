@@ -26,6 +26,32 @@
             --transition: 0.3s ease;
         }
 
+        .leadtime-banner {
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-surface-light);
+            padding: 0.75rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .leadtime-banner .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .leadtime-text {
+            color: var(--color-text);
+        }
+        .leadtime-text strong {
+            color: var(--color-accent);
+        }
+
         .promo-banner {
             background-color: var(--color-accent);
             color: #111;
@@ -94,13 +120,32 @@
             text-decoration: none;
         }
         .logo img {
-            height: 40px;
+            height: 48px;
             width: auto;
             display: block;
         }
         .logo span {
             color: var(--color-accent);
         }
+
+        /* Centered logo-only header */
+        .navbar-centered {
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem 2rem 0.75rem;
+        }
+        .logo-solo img {
+            height: 56px;
+        }
+        .navbar-centered .nav-links {
+            justify-content: center;
+        }
+        .navbar-centered .mobile-menu-btn {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -231,6 +276,12 @@
             font-size: 0.85rem;
             color: var(--color-text-muted);
         }
+
+        .highlight-yellow {
+            color: #ffd700;
+            font-weight: 700;
+        }
+        
         .price-row:last-child { border-bottom: none; }
         .price-row .price { color: var(--color-text); font-weight: 600; }
 
@@ -271,6 +322,66 @@
             text-align: center;
             padding: 1rem;
         }
+
+        
+    /* Cerakote price list styles - skip if already added */
+    .price-section { background-color: var(--color-surface); }
+    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .price-card { background-color: var(--color-bg); border: 1px solid var(--color-surface-light); border-radius: var(--radius); padding: 1.5rem; }
+    .price-card h3 { font-family: var(--font-heading); color: var(--color-accent); font-size: 1.2rem; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-surface-light); }
+    .price-sub { font-size: 0.8rem; color: var(--color-text-muted); font-style: italic; margin-bottom: 0.75rem; }
+    .price-note { text-align: center; color: var(--color-text-muted); font-size: 0.85rem; margin-top: 2rem; }
+
+/* =======================
+           MODULE: PRICE MODAL
+        ======================== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 3rem 1rem;
+        }
+        .modal-overlay.open {
+            display: block;
+        }
+        .modal {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-surface-light);
+            border-radius: var(--radius);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: 1px solid var(--color-surface-light);
+            border-radius: var(--radius);
+            color: var(--color-text);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .modal-close:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        /* Make the Cerakote card look clickable */
+        .clickable-card {
+            cursor: pointer;
+        }
+
 
         /* CTA */
         .cta {
@@ -324,10 +435,20 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
+            .navbar-centered .nav-links.active {
+                position: absolute;
+            }
         }
     </style>
 </head>
 <body>
+
+     <!-- LEAD TIME BANNER -->
+    <div class="leadtime-banner">
+        <div class="container">
+            <span class="leadtime-text">⏱ Current Lead Time: <strong>10–15 Business Days</strong> on all Cerakote & coating jobs</span>
+        </div>
+    </div>
 
     <!-- PROMO BANNER -->
     <div class="promo-banner">
@@ -338,10 +459,9 @@
     </div>
 
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
+        <div class="container navbar-centered">
+            <a href="index.html" class="logo logo-solo">
                 <img src="images/logo.webp" alt="CD Defense Industries logo">
-                <span>CD Industries</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
             <ul class="nav-links">
@@ -412,7 +532,7 @@
 </article>
 
                 <!-- Cerakote Finishing -->
-                <article class="service-card">
+                <article class="service-card clickable-card" id="cerakote-card">
                     <img src="images/cerakote_kryptic.jpg" alt="Cerakote finishing" class="service-image">
                     <div class="service-body">
                         <h3>Cerakote Finishing</h3>
@@ -425,10 +545,9 @@
                         </ul>
                         <div class="pricing-block">
                             <h4>Pricing</h4>
-                            <div class="price-row"><span>Handgun (single color)</span><span class="price">$150</span></div>
-                            <div class="price-row"><span>Rifle / Shotgun</span><span class="price">$200–$275</span></div>
-                            <div class="price-row"><span>Multi-color / Camo</span><span class="price">$275–$450</span></div>
-                            <div class="price-row"><span>Custom Stencil</span><span class="price">$50–$125</span></div>
+                            <p style="color: var(--color-text-muted); font-size: 0.85rem;">
+                                Click to view the full price list — pistols, rifles, shotguns, optics, camo patterns, knives, and tumblers.
+                            </p>
                         </div>
                     </div>
                 </article>
@@ -447,7 +566,7 @@
                         </ul>
                         <div class="pricing-block">
                             <h4>Pricing</h4>
-                            <div class="price-row"><span>Ammunition - Fee is per order number <br> no minimum/maximum amount per order<br> includes NYS background check </span><span class="price">$10</span></div>
+                            <div class="price-row"><span>Ammunition - Fee is per order number <br> <span class="highlight-yellow">no minimum/maximum amount per order<br> includes NYS background check</span></span><span class="price">$10</span></div>
                             <div class="price-row"><span>Long Gun Transfer</span><span class="price">$40</span></div>
                             <div class="price-row"><span>Private Party</span><span class="price">$50</span></div>
                             <div class="price-row"><span>Storage (per month)</span><span class="price">$15</span></div>
@@ -458,6 +577,139 @@
             </div>
         </div>
     </section>
+
+<!-- =======================
+         MODULE: CERAKOTE PRICE MODAL
+    ======================== -->
+    <div class="modal-overlay" id="cerakote-modal">
+        <div class="modal">
+            <button class="modal-close" aria-label="Close price list" onclick="closeCerakoteModal()">✕</button>
+
+            <h2 class="section-title" style="text-align:center; margin-bottom: 0.5rem;">Cerakote Price List</h2>
+            <p class="section-subtitle" style="text-align:center; color: var(--color-text-muted); margin-bottom: 3rem;">Full pricing for every coating job we offer.</p>
+
+            <div class="price-grid">
+
+                <!-- Pistols -->
+                <div class="price-card">
+                    <h3>Pistols — Single Color</h3>
+                    <div class="price-row"><span>Complete Pistol</span><span class="price">$200</span></div>
+                    <div class="price-row"><span>Frame Only</span><span class="price">$120</span></div>
+                    <div class="price-row"><span>Slide</span><span class="price">$100</span></div>
+                    <div class="price-row"><span>Controls</span><span class="price">$30–35 ea</span></div>
+                    <div class="price-row"><span>Baseplate</span><span class="price">$20</span></div>
+                    <div class="price-row"><span>Barrel</span><span class="price">$70</span></div>
+                    <div class="price-row"><span>Trigger</span><span class="price">$25</span></div>
+                    <div class="price-row"><span>Disassembly / Reassembly</span><span class="price">$45</span></div>
+                </div>
+
+                <!-- AR Variant -->
+                <div class="price-card">
+                    <h3>AR Variant — Single Color</h3>
+                    <!-- VERIFY: "Complete AR" had no price in the source document -->
+                    <div class="price-row"><span>Complete AR</span><span class="price">Call for quote</span></div>
+                    <div class="price-row"><span>Upper Receiver</span><span class="price">$80</span></div>
+                    <div class="price-row"><span>Lower Receiver</span><span class="price">$80</span></div>
+                    <div class="price-row"><span>Handguard</span><span class="price">$100</span></div>
+                    <div class="price-row"><span>Upper / Lower / Handguard</span><span class="price">$240</span></div>
+                    <div class="price-row"><span>BCG (Micro Slick)</span><span class="price">$75</span></div>
+                    <div class="price-row"><span>Lower Parts Kit</span><span class="price">$70</span></div>
+                    <div class="price-row"><span>Upper Parts Kit</span><span class="price">$70</span></div>
+                    <div class="price-row"><span>BCG</span><span class="price">$70</span></div>
+                    <!-- VERIFY: "Barrel" price was missing in the doc -->
+                    <div class="price-row"><span>Barrel</span><span class="price">Call for quote</span></div>
+                    <div class="price-row"><span>Magazine</span><span class="price">$25</span></div>
+                    <div class="price-row"><span>Butt Stock</span><span class="price">$45</span></div>
+                    <div class="price-row"><span>Buffer Tube</span><span class="price">$60</span></div>
+                    <div class="price-row"><span>Brace</span><span class="price">$45+</span></div>
+                    <div class="price-row"><span>Furniture Set</span><span class="price">$120–250</span></div>
+                    <div class="price-row"><span>Muzzle Device</span><span class="price">$25–45</span></div>
+                    <div class="price-row"><span>Gas Block & Tube</span><span class="price">$40</span></div>
+                    <div class="price-row"><span>Disassembly + Reassembly</span><span class="price">$75</span></div>
+                </div>
+
+                <!-- Shotguns -->
+                <div class="price-card">
+                    <h3>Shotguns — Single Color</h3>
+                    <div class="price-row"><span>Complete Shotgun</span><span class="price">$295</span></div>
+                    <div class="price-row"><span>Barrel + Action</span><span class="price">$200</span></div>
+                    <div class="price-row"><span>Stock + Forend</span><span class="price">$110</span></div>
+                    <div class="price-row"><span>Bolt</span><span class="price">$75</span></div>
+                    <div class="price-row"><span>Barrel</span><span class="price">$75</span></div>
+                    <div class="price-row"><span>Disassembly + Reassembly</span><span class="price">$75</span></div>
+                </div>
+
+                <!-- Optics / Accessories -->
+                <div class="price-card">
+                    <h3>Optics / Accessories — Single Color</h3>
+                    <p class="price-sub">No optics over $600 MSRP</p>
+                    <div class="price-row"><span>Scope LG + Masking</span><span class="price">$300–450</span></div>
+                    <div class="price-row"><span>Scope SM + Masking</span><span class="price">$250–350</span></div>
+                    <div class="price-row"><span>Red Dot + Masking</span><span class="price">$200–350</span></div>
+                    <div class="price-row"><span>Scope Mount</span><span class="price">$60</span></div>
+                    <div class="price-row"><span>Weapon Light</span><span class="price">$100</span></div>
+                    <div class="price-row"><span>Bipod</span><span class="price">$100–250</span></div>
+                    <div class="price-row"><span>Disassembly + Reassembly</span><span class="price">$25–100</span></div>
+                </div>
+
+                <!-- Camo Patterns -->
+                <div class="price-card">
+                    <h3>Camo Patterns</h3>
+                    <p class="price-sub">Prices shown as Pistol / Rifle</p>
+                    <div class="price-row"><span>Battleworn Finish</span><span class="price">$50</span></div>
+                    <div class="price-row"><span>Tiger Stripe (2 color)</span><span class="price">$275 / $350</span></div>
+                    <div class="price-row"><span>Woodland Camo (3 color)</span><span class="price">$350 / $450</span></div>
+                    <div class="price-row"><span>Multi-Cam</span><span class="price">$395 / $550</span></div>
+                    <div class="price-row"><span>Kryptek (Nomad)</span><span class="price">$425 / $650</span></div>
+                    <div class="price-row"><span>Hex Camo</span><span class="price">$425 / $650</span></div>
+                    <div class="price-row"><span>Digital</span><span class="price">$500 / $750</span></div>
+                    <div class="price-row"><span>Sitka</span><span class="price">$550 / $800</span></div>
+                </div>
+
+                <!-- Optics Camo -->
+                <div class="price-card">
+                    <h3>Optics / Accessories — Camo</h3>
+                    <!-- VERIFY: source showed garbled "925-600" for Scope LG -->
+                    <div class="price-row"><span>Scope LG + Masking</span><span class="price">$425–600</span></div>
+                    <div class="price-row"><span>Scope SM + Masking</span><span class="price">$300–550</span></div>
+                    <div class="price-row"><span>Red Dot + Masking</span><span class="price">$225–550</span></div>
+                    <div class="price-row"><span>Scope Mount</span><span class="price">$100–200</span></div>
+                    <div class="price-row"><span>Weapon Light</span><span class="price">$125–300</span></div>
+                    <div class="price-row"><span>Bipod</span><span class="price">$175–350</span></div>
+                    <div class="price-row"><span>Disassembly + Reassembly</span><span class="price">$25–100</span></div>
+                </div>
+
+                <!-- Knives -->
+                <div class="price-card">
+                    <h3>Knives — Single + Multi-Color</h3>
+                    <!-- VERIFY: the Battleworn rows look shifted in the source doc -->
+                    <div class="price-row"><span>Fixed Blade <10" (1 Color)</span><span class="price">$50</span></div>
+                    <div class="price-row"><span>Fixed Blade <10" Camo</span><span class="price">$60+</span></div>
+                    <div class="price-row"><span>Fixed Blade <10" Battleworn</span><span class="price">$40+</span></div>
+                    <div class="price-row"><span>Folding Knife (1 Color)</span><span class="price">$70+</span></div>
+                    <div class="price-row"><span>Folding Knife Camo</span><span class="price">$80+</span></div>
+                    <div class="price-row"><span>Folding Knife Battleworn</span><span class="price">$80+</span></div>
+                    <div class="price-row"><span>Large Knife / Sword (1 Color)</span><span class="price">$150</span></div>
+                    <div class="price-row"><span>Large Knife / Sword Camo</span><span class="price">$200+</span></div>
+                    <div class="price-row"><span>Large Knife / Sword Battleworn</span><span class="price">$70+</span></div>
+                </div>
+
+                <!-- Tumblers / Cups -->
+                <div class="price-card">
+                    <h3>Tumblers / Cups</h3>
+                    <!-- VERIFY: "Camo Patterns" value was garbled in the source -->
+                    <div class="price-row"><span>Single Color 30 oz</span><span class="price">$45</span></div>
+                    <div class="price-row"><span>Single Color 20 oz</span><span class="price">$35</span></div>
+                    <div class="price-row"><span>Camo Patterns</span><span class="price">$50–100</span></div>
+                    <div class="price-row"><span>Battle Worn</span><span class="price">$50+</span></div>
+                    <div class="price-row"><span>Custom Logos + Graphics</span><span class="price">$60+</span></div>
+                </div>
+
+            </div>
+
+            <p class="price-note">Prices are starting points and may vary by condition, prep work, and pattern complexity. Contact us for an exact quote.</p>
+        </div>
+    </div>
 
     <!-- GALLERY SECTION -->
     <section class="gallery-section">
@@ -495,13 +747,46 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
         const menuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
+
+        // Auto-update copyright year
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Cerakote price modal
+        const cerakoteModal = document.getElementById('cerakote-modal');
+        const cerakoteCard = document.getElementById('cerakote-card');
+
+        function openCerakoteModal() {
+            cerakoteModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCerakoteModal() {
+            cerakoteModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        cerakoteCard.addEventListener('click', openCerakoteModal);
+
+        // Close when clicking the dark overlay outside the modal box
+        cerakoteModal.addEventListener('click', function(e) {
+            if (e.target === cerakoteModal) {
+                closeCerakoteModal();
+            }
+        });
+
+        // Close with the Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCerakoteModal();
+            }
+        });
     </script>
 </body>
 </html>

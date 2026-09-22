@@ -31,6 +31,32 @@
             --transition: 0.3s ease;
         }
 
+        .leadtime-banner {
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-surface-light);
+            padding: 0.75rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .leadtime-banner .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .leadtime-text {
+            color: var(--color-text);
+        }
+        .leadtime-text strong {
+            color: var(--color-accent);
+        }
+
         .promo-banner {
             background-color: var(--color-accent);
             color: #111;
@@ -154,7 +180,7 @@
             text-decoration: none;
         }
         .logo img {
-            height: 40px;
+            height: 48px;
             width: auto;
             display: block;
         }
@@ -515,6 +541,13 @@
 </head>
 <body>
 
+    <!-- LEAD TIME BANNER -->
+    <div class="leadtime-banner">
+        <div class="container">
+            <span class="leadtime-text">⏱ Current Lead Time: <strong>10–15 Business Days</strong> on all Cerakote & coating jobs</span>
+        </div>
+    </div>
+
     <!-- PROMO BANNER -->
     <div class="promo-banner">
         <div class="container">
@@ -530,7 +563,6 @@
         <div class="container">
             <a href="index.html" class="logo">
                 <img src="images/logo.webp" alt="CD Defense Industries logo">
-                <span>CD Industries</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
             <ul class="nav-links">
