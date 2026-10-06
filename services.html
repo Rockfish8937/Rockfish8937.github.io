@@ -27,62 +27,45 @@
         }
 
         .leadtime-banner {
-            background-color: var(--color-surface);
-            color: var(--color-text);
-            border-bottom: 1px solid var(--color-surface-light);
-            padding: 0.75rem 2rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-        }
-        .leadtime-banner .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-        .leadtime-text {
-            color: var(--color-text);
-        }
-        .leadtime-text strong {
-            color: var(--color-accent);
-        }
+    background-color: var(--color-accent);
+    color: #111;
+    padding: 0.75rem 2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+.leadtime-text {
+    color: #111;
+}
+.leadtime-text strong {
+    color: #111;
+    font-weight: 700;
+}
 
         .promo-banner {
-            background-color: var(--color-accent);
-            color: #111;
-            padding: 0.75rem 2rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-        }
-        .promo-banner .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-        .promo-text {
-            color: #111;
-        }
-        .promo-link {
-            color: #111;
-            text-decoration: underline;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-        .promo-link:hover {
-            color: #000;
-        }
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-surface-light);
+    padding: 0.75rem 2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+.promo-text {
+    color: var(--color-text);
+}
+.promo-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+.promo-link:hover {
+    color: var(--color-accent-hover);
+}
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
@@ -104,7 +87,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: .75rem 2rem;
             max-width: var(--max-width);
             margin: 0 auto;
         }
@@ -120,32 +103,20 @@
             text-decoration: none;
         }
         .logo img {
-            height: 48px;
+            height: 88px;              /* was 48px */
             width: auto;
             display: block;
+            transition: transform var(--transition);
         }
+        .logo:hover img {
+            transform: scale(1.05);    /* same hover pop as index, minus the glow */
+        }
+
         .logo span {
             color: var(--color-accent);
         }
 
-        /* Centered logo-only header */
-        .navbar-centered {
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1rem 2rem 0.75rem;
-        }
-        .logo-solo img {
-            height: 56px;
-        }
-        .navbar-centered .nav-links {
-            justify-content: center;
-        }
-        .navbar-centered .mobile-menu-btn {
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-        }
-
+    
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -435,8 +406,8 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
-            .navbar-centered .nav-links.active {
-                position: absolute;
+            .logo img {
+            height: 60px;
             }
         }
     </style>
@@ -459,10 +430,10 @@
     </div>
 
     <nav class="navbar">
-        <div class="container navbar-centered">
-            <a href="index.html" class="logo logo-solo">
-                <img src="images/logo.webp" alt="CD Defense Industries logo">
-            </a>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.webp" alt="CD Defense Industries logo">
+        </a>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
             <ul class="nav-links">
                 <li><a href="services.html">Services</a></li>
